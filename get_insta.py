@@ -62,7 +62,7 @@ with open('instag.csv', 'w') as f:
 for num in range(0, len(users)):
     listData = []   #listの初期化
     
-    listData.append(users[num]) #listにユーザー名、画像url、いいね数、コメント数を追加
+    listData.append("https://www.instagram.com/"+users[num]) #listにユーザー名、画像url、いいね数、コメント数を追加
     listData.append(pictures[num])
     listData.append(likes[num])
     listData.append(comments[num])
