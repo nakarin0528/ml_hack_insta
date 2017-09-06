@@ -18,11 +18,13 @@ for link in links:
     print("comments: " + str(data["entry_data"]["PostPage"][0]["graphql"]["shortcode_media"]["edge_media_to_comment"]["count"]))
     print("likes: " + str(data["entry_data"]["PostPage"][0]["graphql"]["shortcode_media"]["edge_media_preview_like"]["count"]))
     print("url: " + str(data["entry_data"]["PostPage"][0]["graphql"]["shortcode_media"]["display_url"]))
-
+　　
+    # ユーザー名の配列に要素を追加
     users.append(str(data["entry_data"]["PostPage"][0]["graphql"]["shortcode_media"]["owner"]["username"]))
 
     print("################################################")
 
+# ファイルに出力
 f = open('user.txt', 'w')
 for user in users:
     f.write("https://www.instagram.com/" + user + "\n")
