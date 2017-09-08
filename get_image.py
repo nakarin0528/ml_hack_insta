@@ -43,12 +43,12 @@ def save_image(filename, image):
         fout.write(image)
 
 if __name__ == "__main__":
-    images_dir = "img"
+    images_dir = "img/all"
     idx = 1
     imgdir = "instag.csv"
     csvdata = []
     readcsv(imgdir,csvdata)
-        
+
     for line in csvdata[1:]:
 	    url = line[1]
 	    print(url)
