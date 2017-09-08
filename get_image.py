@@ -2,6 +2,19 @@ import csv
 import os
 import sys
 import requests
+import time
+
+def CheckIdx(images_dir):
+	i = 0
+	while True:
+		name = images_dir + "/" + str(i) + ".jpg"
+		print(name)
+		if not os.path.exists(name):
+			return i
+		i += 1
+
+def MakeDirectry(location):
+	os.makedirs(location)
 
 def readcsv(filename,csvdata):
 	try:
@@ -43,10 +56,14 @@ def save_image(filename, image):
         fout.write(image)
 
 if __name__ == "__main__":
-    images_dir = "img/all"
-    idx = 1
-    imgdir = "instag.csv"
+    images_dir = "img/all" #ここ変えれば保存先フォルダが変わります
+    idx = 0
+    imgdir = "instag.csv" #URL読み取り先はここで変更してください
     csvdata = []
+    if not os.path.exists(images_dir):
+	    MakeDirectry(images_dir)
+    #idxを定める関数（上書きしないように）
+    idx = CheckIdx(images_dir)
     readcsv(imgdir,csvdata)
 
     for line in csvdata[1:]:
@@ -61,3 +78,4 @@ if __name__ == "__main__":
 		    break;
 	    except Exception as err:
 		    break;
+	    time.sleep(1)
