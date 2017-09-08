@@ -11,7 +11,7 @@ nb_classes = len(categories)
 image_size = 50
 
 # データをロード --- (※1)
-X_train, X_test, y_train, y_test = np.load("./image/gyudon2.npy")
+X_train, X_test, y_train, y_test = np.load("./img/mono2.npy")
 # データを正規化する
 X_train = X_train.astype("float") / 256
 X_test  = X_test.astype("float")  / 256
@@ -48,7 +48,7 @@ model = build_model()
 model.fit(X_train, y_train, batch_size=32, nb_epoch=10)
 
 # モデルを保存する --- (※6)
-hdf5_file = "./image/gyudon-model.hdf5"
+hdf5_file = "./img/mono-model.hdf5"
 model.save_weights(hdf5_file)
 
 # モデルを評価する --- (※5)

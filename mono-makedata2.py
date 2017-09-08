@@ -57,5 +57,5 @@ test  = allfiles[th:]
 X_train, y_train = make_sample(train, True)
 X_test, y_test = make_sample(test, False)
 xy = (X_train, X_test, y_train, y_test)
-np.save("./image/gyudon2.npy", xy)
+np.save("./img/mono2.npy", xy)
 print("ok,", len(y_train))
