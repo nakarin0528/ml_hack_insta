@@ -9,7 +9,7 @@ if len(sys.argv) <= 1:
     quit()
 
 image_size = 50
-categories = ["mono","color"]
+categories = ["monochrome","color"]
 #calories = [656, 658, 768, 836,100]
 
 # 入力画像をNumpyに変換 --- (※2)
