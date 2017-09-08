@@ -2,6 +2,7 @@
 
 ### Installation
 ```
+git init
 git clone https://github.com/nakarin0528/ml_hack_insta.git
 cd ml_hack_insta
 ```
