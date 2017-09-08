@@ -5,7 +5,7 @@ import numpy as np
 
 # 分類対象のカテゴリを選ぶ --- (※1)
 root_dir = "./img/"
-categories = ["monochrome","color"]
+categories = ["mono","color"]
 nb_classes = len(categories)
 image_size = 50
 
@@ -17,7 +17,7 @@ for idx, cat in enumerate(categories):
     files = glob.glob(image_dir + "/*.jpg")  #上のフォルダに含まれるすべての画像ファイル
     print("---", cat, "を処理中")
     for i, f in enumerate(files):
-        img = Image.open(f)  
+        img = Image.open(f)
         img = img.convert("RGB") # カラーモードの変更
         img = img.resize((image_size, image_size)) # 画像サイズの変更
         data = np.asarray(img)
@@ -32,4 +32,3 @@ X_train, X_test, y_train, y_test = \
 xy = (X_train, X_test, y_train, y_test)
 np.save("./img/mono.npy", xy)
 print("ok,", len(Y))
-
