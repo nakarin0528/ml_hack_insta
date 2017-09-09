@@ -3,7 +3,7 @@ import os
 import sys
 import requests
 import time
-from colorfullcheck import aveLab
+from colorfullcheck import aveLab,aveLab2
 
 argvs = sys.argv  # コマンドライン引数を格納したリストの取得
 argc = len(argvs) # 引数の個数
@@ -67,7 +67,7 @@ def save_image(filename, image):
 if __name__ == "__main__":
     images_dir = argvs[1] #ここ変えれば保存先フォルダが変わります
     idx = 0
-    imgdir = "./scrape/instagSky.csv" #URL読み取り先はここで変更してください
+    imgdir = "./scrape/instagStb.csv" #URL読み取り先はここで変更してください
     csvdata = []
     likedata = []
     if not os.path.exists(images_dir):
@@ -79,29 +79,35 @@ if __name__ == "__main__":
     list2=[]
     likeIndex = 0
 
-    for line in csvdata[1:11]:
+    for line in csvdata[1:151]:
         url = line[1]
         print(url)
         filename = make_filename(images_dir, idx, url)
         try:
             image = download_image(url)
             save_image(filename, image)
-
+            col = aveLab2(filename,2)
             listData = []
 
             listData.append(filename)
 
             listData.append(line[2])
+            listData.append(col[0][0])
+            listData.append(col[0][1])
+            listData.append(col[0][2])
+            listData.append(col[1][0])
+            listData.append(col[1][1])
+            listData.append(col[1][2])
             print("dasda")
             #listData.append(aveLab(images_dir + "/" + filename,6))
             list2.append(listData)
 
 
 
-            with open('instagSky2.csv', 'w') as f:
+            with open('instagStb2.csv', 'w') as f:
                 writer = csv.writer(f, lineterminator='\n')
                 writer.writerows(list2)
-
+                
             likeIndex += 1
 
             idx += 1
