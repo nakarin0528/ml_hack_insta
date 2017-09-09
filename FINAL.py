@@ -4,9 +4,6 @@ import csv
 from colorfullcheck import aveLab2,aveLab
 from LabDis import labdis
 
-filename = "instagSea2.csv"
-imagename = "new.jpg"
-k = 2
 def final(filename,imagename):
 	csvdata = []
 
@@ -19,7 +16,12 @@ def final(filename,imagename):
 
 	features = np.array(csvdata)
 	kmeans_model = KMeans(n_clusters=2).fit(features)
-	lab = aveLab2(imagename,k)
+	
+	print(kmeans_model.cluster_centers_)
+	
+	lab = aveLab2(imagename,2)
+	
+	print(lab)
 
 	disa =  labdis(kmeans_model.cluster_centers_[0],lab[0])
 	disb =  labdis(kmeans_model.cluster_centers_[0],lab[1])
@@ -37,24 +39,26 @@ def final(filename,imagename):
 	av = (dis1+dis2)/2.0
 	howmany = aveLab(imagename,7)
 
-	if av <= 33.0:
-		if howmany <= 40:
+	if av <= 24.0:
+		if howmany <= 30:
 			print("bad!!:もっとカラフルにしよう")
-		if ((howmany > 40) and (howmany <= 70 )):
+		if ((howmany > 30) and (howmany <= 60 )):
 			print("good!!:もっとカラフルになれば完璧！")
-		if howmany > 70:
+		if howmany > 60:
 			print("very good!!:おめでとう！！")
-	if ((av > 33) and (av <= 66)):
-		if howmany <= 40:
+	if ((av > 24.0) and (av <= 35)):
+		if howmany <= 30:
 			print("bad!!:もっとカラフルにしよう")
-		if ((howmany > 40) and (howmany <= 70 )):
+		if ((howmany > 30) and (howmany <= 60 )):
 			print("soso!!:もっとカラフルに！")
-		if howmany > 70:
+		if howmany > 60:
 			print("good!!:おめでとう！！もっとカテゴリにあった写真を撮ろう！！")
-	if av > 66:
-		if howmany <= 40:
+	if av > 35:
+		if howmany <= 30:
 			print("toobad!!:逆にすごい！！")
-		if ((howmany > 40) and (howmany <= 70 )):
+		if ((howmany > 30) and (howmany <= 60 )):
 			print("bad!!:カテゴリにあった写真を撮ろう！")
-		if howmany > 70:
+		if howmany > 60:
 			print("bad!!:カテゴリにあった写真を撮ろう！！")
+if __name__ == '__main__':
+	final("instagOmu2.csv","new.jpg")
