@@ -4,6 +4,12 @@ import sys
 import requests
 import time
 
+argvs = sys.argv  # コマンドライン引数を格納したリストの取得
+argc = len(argvs) # 引数の個数
+if (argc != 2):   # 引数が足りない場合は、その旨を表示
+    print("実行失敗\n保存先を引数で指定してねー")
+    quit()         # プログラムの終了
+
 def CheckIdx(images_dir):
 	i = 0
 	while True:
@@ -56,7 +62,7 @@ def save_image(filename, image):
         fout.write(image)
 
 if __name__ == "__main__":
-    images_dir = "img/all" #ここ変えれば保存先フォルダが変わります
+    images_dir = argvs[1] #ここ変えれば保存先フォルダが変わります
     idx = 0
     imgdir = "instag.csv" #URL読み取り先はここで変更してください
     csvdata = []
