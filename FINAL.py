@@ -4,7 +4,20 @@ import csv
 from colorfullcheck import aveLab2,aveLab
 from LabDis import labdis
 
-def final(filename,imagename):
+def final(number,imagename):
+	if number == 0:
+		filename = "instagCat2.csv"
+	if number == 1:
+		filename = "instagSea2.csv"
+	if number == 2:
+		filename = "instagFlo2.csv"
+	if number == 3:
+		filename = "instagStb2.csv"
+	if number == 4:
+		filename = "instagSky2.csv"
+	if number == 5:
+		filename = "instagOmu2.csv"
+	
 	csvdata = []
 
 	with open(filename,'r') as csvfile:
@@ -41,24 +54,24 @@ def final(filename,imagename):
 
 	if av <= 24.0:
 		if howmany <= 30:
-			print("bad!!:もっとカラフルにしよう")
+			return("bad!!:もっとカラフルにしよう")
 		if ((howmany > 30) and (howmany <= 60 )):
-			print("good!!:もっとカラフルになれば完璧！")
+			return("good!!:もっとカラフルになれば完璧！")
 		if howmany > 60:
-			print("very good!!:おめでとう！！")
+			return("very good!!:おめでとう！！")
 	if ((av > 24.0) and (av <= 35)):
 		if howmany <= 30:
-			print("bad!!:もっとカラフルにしよう")
+			return("bad!!:もっとカラフルにしよう")
 		if ((howmany > 30) and (howmany <= 60 )):
-			print("soso!!:もっとカラフルに！")
+			return("soso!!:もっとカラフルに！")
 		if howmany > 60:
-			print("good!!:おめでとう！！もっとカテゴリにあった写真を撮ろう！！")
+			return("good!!:おめでとう！！もっとカテゴリにあった写真を撮ろう！！")
 	if av > 35:
 		if howmany <= 30:
-			print("toobad!!:逆にすごい！！")
+			return("toobad!!:逆にすごい！！")
 		if ((howmany > 30) and (howmany <= 60 )):
-			print("bad!!:カテゴリにあった写真を撮ろう！")
+			return("bad!!:カテゴリにあった写真を撮ろう！")
 		if howmany > 60:
-			print("bad!!:カテゴリにあった写真を撮ろう！！")
+			return("bad!!:カテゴリにあった写真を撮ろう！！")
 if __name__ == '__main__':
 	final("instagOmu2.csv","new.jpg")
